@@ -1,0 +1,25 @@
+{
+  "name": "neuradbackupadmin",
+  "version": "1.0.0",
+  "description": "A Admin Server for Apps to backup on unsupported time",
+  "main": "src/app.js",
+  "scripts": {
+    "run": "node src/app.js"
+  },
+  "keywords": [],
+  "author": "Vishal B",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "ferbotz-auth": "^1.0.2",
+    "ferbotz-certify": "^1.0.2",
+    "ferbotz-rekon": "^1.0.9",
+    "google-auth-library": "^9.14.1",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.6.3",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
+  }
+}
