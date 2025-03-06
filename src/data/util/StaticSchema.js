@@ -56,23 +56,39 @@ const adPlacements = [
     'TWENTY_FIVE'
 ]
 
-const backupAdMetaDataSchema = joi.object({
-    data : joi.array().items(joi.object({
-        id : joi.string().min(1).required(),
-        description : joi.string().min(1).required(),
-        network : joi.string().valid(...adNetworks).required(),
-        adType : joi.string().valid(...adTypes).required(),
-        credential : joi.object().required()
-    })).required(),
-}).unknown(false).required()
+const backupAdMetaDataSchema = [
+    {
+        version : {
+            rule : 'GREATER_OR_EQUAL',
+            number : 0
+        },
+        config : joi.object({
+            data : joi.array().items(joi.object({
+                id : joi.string().min(1).required(),
+                description : joi.string().min(1).required(),
+                network : joi.string().valid(...adNetworks).required(),
+                adType : joi.string().valid(...adTypes).required(),
+                credential : joi.object().required()
+            })).required(),
+        }).unknown(false).required()
+    }
+]
 
-const backupAdPlacementDataSchema = joi.object({
-    data : joi.array().items(joi.object({
-        adKind : joi.string().valid(...adKinds).required(),
-        adPlacement : joi.string().valid(...adPlacements).required(),
-        adMetaDataId : joi.string().min(1).required()
-    })).required(),
-}).unknown(false).required()
+const backupAdPlacementDataSchema = [
+    {
+        version : {
+            rule : 'GREATER_OR_EQUAL',
+            number : 0
+        },
+        config : joi.object({
+            data : joi.array().items(joi.object({
+                adKind : joi.string().valid(...adKinds).required(),
+                adPlacement : joi.string().valid(...adPlacements).required(),
+                adMetaDataId : joi.string().min(1).required()
+            })).required(),
+        }).unknown(false).required()
+    }
+]
 
 const staticSchemas = {
     'backup_ad_meta_data' : backupAdMetaDataSchema,
